@@ -456,7 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Sharon Yu (R2D5YUNAPA)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 678MZVH5SX;
 				INFOPLIST_FILE = Actions/Info.plist;
