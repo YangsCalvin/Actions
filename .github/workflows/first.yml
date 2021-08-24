@@ -36,6 +36,6 @@ jobs:
             certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
             
       - name: push to fir
-        run: curl -F 'file=output.ipa' -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
+        run: curl -F 'file=@/_work/Actions/Actions/output.ipa' -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
 
             
