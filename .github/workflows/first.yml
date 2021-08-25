@@ -24,7 +24,7 @@ jobs:
 #        run: echo Hello, world!
       - shell: bash
         run: |
-          expr ${{date + "%m%d%H%M"}} > name_number.log
+          expr 2+5 > name_number.log
           
       - uses: yukiarrr/ios-build-action@v1.4.0
         with:
