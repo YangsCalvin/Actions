@@ -22,7 +22,10 @@ jobs:
         
 #      - name: Run a one-line script
 #        run: echo Hello, world!
-        
+      - shell: bash
+        run: |
+          expr ${{date + "%m%d%H%M"}} > name_number.log
+          
       - uses: yukiarrr/ios-build-action@v1.4.0
         with:
             project-path: Actions.xcodeproj
