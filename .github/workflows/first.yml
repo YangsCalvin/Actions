@@ -54,6 +54,7 @@ jobs:
       - name: push to fir
         run: curl -F file=@/Users/jiwenzhang/Desktop/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
 
+
 #      - name: push to fir
 #        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
 
