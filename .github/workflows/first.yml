@@ -46,11 +46,11 @@ jobs:
             team-id: ${{ secrets.TEAM_ID }}
             export-method: 'development'
             certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
-            output-path: ${{ steps.day.outputs.day }}/${{ steps.minute.outputs.minute }}.ipa
+            output-path: ${{ steps.day.outputs.day }}/${{ steps.minute.outputs.minute }}me.ipa
 #            output-path: output.ipa
 #            output-path: ${{ github.run_id }}.ipa
         
       - name: push to fir
-        run: curl -F file=@/Users/jiwenzhang/actions-runner/_work/Actions/Actions/${{ steps.day.outputs.day }}/${{ steps.minute.outputs.minute }}.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
+        run: curl -F file=@/Users/jiwenzhang/actions-runner/_work/Actions/Actions/${{ steps.day.outputs.day }}/${{ steps.minute.outputs.minute }}me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
 
             
