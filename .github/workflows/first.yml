@@ -46,10 +46,14 @@ jobs:
             team-id: ${{ secrets.TEAM_ID }}
             export-method: 'development'
             certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
-            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa
+#            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa
 #            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/me.ipa
-#            output-path: output.ipa
+            output-path: output.ipa
 #            output-path: ${{ github.run_id }}.ipa
+      
+      - name: Get path
+        id: path
+        run: echo "::set-output name=path::$PATH"
 
       - name: push to fir
         id: PushToFir
@@ -57,9 +61,8 @@ jobs:
         with:
           url: 'https://www.pgyer.com/apiv2/app/upload'
           method: post
-          data: '{"_api_key":"ae0aac62cabfbd64173ee7af786d051d","file": "me.ipa"}'
-
-
+          data: '{"_api_key":"ae0aac62cabfbd64173ee7af786d051d","file": "/Users/jiwenzhang/actions-runner/_work/Actions/Actions/output.ipa"}'
+        
 
 #uses:
 #with:
