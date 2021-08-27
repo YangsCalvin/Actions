@@ -57,7 +57,7 @@ jobs:
         with:
           url: 'https://www.pgyer.com/apiv2/app/upload'
           method: 'POST'
-          data: toJSON({'_api_key':'ae0aac62cabfbd64173ee7af786d051d','file': '@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa'})
+          data: toJSON({'_api_key':'ae0aac62cabfbd64173ee7af786d051d','file': 'me.ipa'})
 #          data: {_api_key:'ae0aac62cabfbd64173ee7af786d051d',file: @/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa}
             
       - name: Show Response
