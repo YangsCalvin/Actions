@@ -54,10 +54,7 @@ jobs:
 
       - name: push to fir
         id: PushToFir
-        run: |
-          reponse = curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
-          echo reponse
-    
+        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload -o abc.txt
 
 
 
