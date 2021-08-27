@@ -56,7 +56,7 @@ jobs:
         uses: CamiloGarciaLaRotta/watermelon-http-client@v1
         with:
           url: 'https://www.pgyer.com/apiv2/app/upload'
-          method: 'post
+          method: post
           data: '{"_api_key":"ae0aac62cabfbd64173ee7af786d051d","file": "me.ipa"}'
 
 
