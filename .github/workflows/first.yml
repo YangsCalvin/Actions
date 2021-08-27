@@ -54,17 +54,40 @@ jobs:
 
       - name: push to fir
         id: PushToFir
-        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload -o abc.json
-
-      - name: Read Properties
-        id: read_property
-        uses:  ashley-taylor/read-json-property-action@v1.0
+        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=255538ec7cc065061e64e5f01f97278e' https://www.pgyer.com/apiv2/app/upload -o abc.json
+        
+      - name: Send dingding notify
+        uses: zcong1993/actions-ding@master
         with:
-          path: /Users/jiwenzhang/actions-runner/_work/Actions/Actions/abc.json
-          property: data
-            
-      - name: echo buildQRCodeURL
-        run: echo data = ${{ steps.read_property.outputs.value }}
+          dingToken: bfc39346dfc105c313d0b982e40570e0b7a257672f6ee9496737765a2dc1c0c2
+          body: |
+            {
+              "msgtype": "link",
+              "link": {
+                  "text": "ios 包名是什么",
+                  "title": "ios 自动打包",
+                  "picUrl": "",
+                  "messageUrl": "https://www.pgyer.com/3LLf"
+              }
+            }
+        
+#      https://www.pgyer.com/3LLf
+
+
+# https://oapi.dingtalk.com/robot/send?access_token=bfc39346dfc105c313d0b982e40570e0b7a257672f6ee9496737765a2dc1c0c2
+
+
+
+
+#      - name: Read Properties
+#        id: read_property
+#        uses:  ashley-taylor/read-json-property-action@v1.0
+#        with:
+#          path: /Users/jiwenzhang/actions-runner/_work/Actions/Actions/abc.json
+#          property: data
+#
+#      - name: echo buildQRCodeURL
+#        run: echo data = ${{ steps.read_property.outputs.value }}
 
 
 
