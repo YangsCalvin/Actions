@@ -64,7 +64,7 @@ jobs:
           property: buildQRCodeURL
             
       - name: echo buildQRCodeURL
-          run: echo ${{ steps.read_property.outputs.value }}
+        run: echo ${{ steps.read_property.outputs.value }}
 
 
 
