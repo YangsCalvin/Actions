@@ -46,38 +46,15 @@ jobs:
             team-id: ${{ secrets.TEAM_ID }}
             export-method: 'development'
             certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
-#            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa
+            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa
 #            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/me.ipa
-            output-path: output.ipa
+#            output-path: output.ipa
 #            output-path: ${{ github.run_id }}.ipa
-      
-      - name: Get path
-        id: path
-        run: echo "::set-output name=path::$PATH"
+
 
       - name: push to fir
         id: PushToFir
-        uses: CamiloGarciaLaRotta/watermelon-http-client@v1
-        with:
-          url: 'https://www.pgyer.com/apiv2/app/upload'
-          method: post
-          data: '{"_api_key":"ae0aac62cabfbd64173ee7af786d051d","file": "/Users/jiwenzhang/actions-runner/_work/Actions/Actions/output.ipa"}'
-        
-
-#uses:
-#with:
-#  url: 'https://jsonplaceholder.typicode.com/todos'
-#  method: post
-#  data: '{ "title": "dummy-todo", "userId": 1, "completed": false }'
-            
-#      - name: Show Response
-#        run: echo ${{ steps.PushToFir.outputs.response }}
-
-
-
-#      - name: push to fir
-#        id: PushToFir
-#        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
+        run: reponse = curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
     
 
 
