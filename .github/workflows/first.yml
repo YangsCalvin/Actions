@@ -50,7 +50,8 @@ jobs:
 #            output-path: ${{ github.run_id }}.ipa
 
             
-#      - name: push to fir
-#        run: curl -F 'file=@/Users/jiwenzhang/actions-runner/_work/Actions/Actions/output.ipa' -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
+      - name: push to fir
+        run: curl -F $PATH -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
+        env: PATH: file=@/Users/jiwenzhang/actions-runner/_work/Actions/Actions/${{ steps.day.outputs.day }}/${{ steps.minute.outputs.minute }}.ipa
 
             
