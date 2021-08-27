@@ -42,7 +42,8 @@ jobs:
             team-id: ${{ secrets.TEAM_ID }}
             export-method: 'development'
             certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
-            output-path: ${{ github.run_id }}.ipa
+            output-path: ${{ steps.date.outputs.date }}.ipa
+#            output-path: ${{ github.run_id }}.ipa
 
             
 #      - name: push to fir
