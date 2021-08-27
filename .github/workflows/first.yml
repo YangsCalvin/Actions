@@ -61,10 +61,10 @@ jobs:
         uses:  ashley-taylor/read-json-property-action@v1.0
         with:
           path: /Users/jiwenzhang/actions-runner/_work/Actions/Actions/abc.json
-          property: buildQRCodeURL
+          property: data
             
       - name: echo buildQRCodeURL
-        run: echo ${{ steps.read_property.outputs.value }}
+        run: echo data = ${{ steps.read_property.outputs.value }}
 
 
 
