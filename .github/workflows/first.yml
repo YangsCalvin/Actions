@@ -53,15 +53,15 @@ jobs:
 
       - name: push to fir
         id: PushToFir
-        uses: fjogeleit/http-request-action@master
+        uses: CamiloGarciaLaRotta/watermelon-http-client@v1
         with:
           url: 'https://www.pgyer.com/apiv2/app/upload'
-          method: 'POST'
-          data: '{'_api_key':'ae0aac62cabfbd64173ee7af786d051d','file': 'me.ipa'}'
+          method: 'post
+          data: '{"_api_key":"ae0aac62cabfbd64173ee7af786d051d","file": "me.ipa"}'
 
 
 
-#uses: CamiloGarciaLaRotta/watermelon-http-client@v1
+#uses:
 #with:
 #  url: 'https://jsonplaceholder.typicode.com/todos'
 #  method: post
