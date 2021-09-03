@@ -56,21 +56,21 @@ jobs:
         id: PushToFir
         run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=255538ec7cc065061e64e5f01f97278e' https://www.pgyer.com/apiv2/app/upload -o abc.json
         
-#      - name: Send dingding notify
-#        uses: zcong1993/actions-ding@master
-#        with:
-#          dingToken: "bfc39346dfc105c313d0b982e40570e0b7a257672f6ee9496737765a2dc1c0c2"
-#          secret: "SECf55909d1e893217c9ab9c0764a90e89926d1979bea1ba1bb2bb160c92b80f563"
-#          body: |
-#            {
-#              "msgtype": "link",
-#              "link": {
-#                  "text": "这个即将发布的新版本称它为。而在此之前，每当面临重大升级产品经理们都会取一个应景的代",
-#                  "title": "ios 自动打包",
-#                  "messageUrl": "https://www.pgyer.com/3LLf"
-#              }
-#            }
-#
+      - name: Send dingding notify
+        uses: zcong1993/actions-ding@master
+        with:
+          dingToken: "bfc39346dfc105c313d0b982e40570e0b7a257672f6ee9496737765a2dc1c0c2"
+          secret: "SECf55909d1e893217c9ab9c0764a90e89926d1979bea1ba1bb2bb160c92b80f563"
+          body: |
+            {
+              "msgtype": "link",
+              "link": {
+                  "text": "${{ steps.date.outputs.date }}",
+                  "title": "ios 自动打包",
+                  "messageUrl": "https://www.pgyer.com/3LLf"
+              }
+            }
+
 
 
       - name: Read Properties
