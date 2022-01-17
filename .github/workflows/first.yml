@@ -1,94 +1,20 @@
-# This is a basic workflow to help you get started with Actions
+name: XcodeBuild
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
-    
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [ main ]
   workflow_dispatch:
-
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: self-hosted
+
+    runs-on: macos-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2 #checkout 代码
-        
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%m%d%H%m')"
-        
-#      - name: Get current minute
-#        id: minute
-#        run: echo "::set-output name=minute::$(date +'%H%m')"
-
-#      - name: Test with environment variables
-#        run: echo $TAG_NAME #- $RELEASE_NAME
-#        env:
-#          TAG_NAME: nightly-tag-${{ steps.date.outputs.date }}
-#          RELEASE_NAME: nightly-release-${{ steps.minute.outputs.minute }}
-          
-      - uses: yukiarrr/ios-build-action@v1.4.0
-        with:
-            project-path: Actions.xcodeproj
-#            workspace-path: ActionsTest.xcworkspace # optional
-            p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
-            p12-cer-base64: ${{ secrets.P12_CER_BASE64 }}
-            mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-            code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-            team-id: ${{ secrets.TEAM_ID }}
-            export-method: 'development'
-            certificate-password: ${{ secrets.CERTIFICATE_PASSWORD }}
-            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa
-#            output-path: /Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/me.ipa
-#            output-path: output.ipa
-#            output-path: ${{ github.run_id }}.ipa
-
-
-      - name: push to fir
-        id: PushToFir
-        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/${{ github.run_number }}/me.ipa -F '_api_key=255538ec7cc065061e64e5f01f97278e' https://www.pgyer.com/apiv2/app/upload -o abc.json
-        
-      - name: Send dingding notify
-        uses: zcong1993/actions-ding@master
-        with:
-          dingToken: "bfc39346dfc105c313d0b982e40570e0b7a257672f6ee9496737765a2dc1c0c2"
-          secret: "SECf55909d1e893217c9ab9c0764a90e89926d1979bea1ba1bb2bb160c92b80f563"
-          body: |
-            {
-              "msgtype": "link",
-              "link": {
-                  "text": "${{ steps.date.outputs.date }}",
-                  "title": "ios 自动打包",
-                  "messageUrl": "https://www.pgyer.com/3LLf"
-              }
-            }
-
-
-
-      - name: Read Properties
-        id: read_property
-        uses:  ashley-taylor/read-json-property-action@v1.0
-        with:
-          path: /Users/jiwenzhang/actions-runner/_work/Actions/Actions/abc.json
-          property: data
-
-      - name: echo buildQRCodeURL
-        run: echo data = ${{ steps.read_property.outputs.value }}
-
-
-
-#      - name: push to fir
-#        run: curl -F file=@/Users/jiwenzhang/Desktop/${{ steps.date.outputs.date }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
-
-#      - name: push to fir
-#        run: curl -F file=@/Users/jiwenzhang/actions-runner/_work/Actions/Actions/${{ steps.date.outputs.date }}/me.ipa -F '_api_key=ae0aac62cabfbd64173ee7af786d051d' https://www.pgyer.com/apiv2/app/upload
-
-            
+    - uses: actions/checkout@v2
+    - name: Build App
+      run: xcodebuild -project "Action.xcodeproj" -scheme "Action" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+      
