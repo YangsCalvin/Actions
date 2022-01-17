@@ -37,8 +37,8 @@ jobs:
             workspace-path: Actions.xcworkspace
             p12-base64: ${{ secrets.P12_BASE64}}
             mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64}}
-            code-signing-identity: ${{ secrets.com.mx.merchants }}
-            team-id: ${{ secrets.CODE_SIGNING_IDENTITY }}
+            code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+            team-id: ${{ secrets.TEAM_ID }}
             export-method: 'development'
             output-path: output.ipa
 #            output-path: ${{ steps.path.outputs.path }}
