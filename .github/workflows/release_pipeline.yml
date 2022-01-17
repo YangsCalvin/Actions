@@ -1,0 +1,35 @@
+name: Release pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AC_ISSUER: "093b7a6a-8833-4791-82d5-3f4ac31c6444"
+  AC_PRIVATE_KEY_ID: "965RP3TSVC"
+  APP_BUNDLE_NAME: "App"
+  APP_BUNDLE_PATH: "./build"
+  ARCHIVE_NAME: "Archive"
+  ARCHIVE_PATH: "./Archive.xcarchive"
+  BUNDLE_ID: "com.mx.merchants"
+  CONFIGURATION: "Release"
+  SCHEME: "Actions"
+  SIGNING_TYPE: "IOS_APP_STORE"
+  TARGET:  "Actions"
+
+jobs:
+  archive:
+    name: Archive
+    runs-on: macOS-latest
+    steps:
+   - uses: yukiarrr/ios-build-action@v1.5.0
+  with:
+    project-path: Actions.xcodeproj
+    p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
+    p12-cer-base64: ${{ secrets.P12_CER_BASE64 }}
+    mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+    code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+    team-id: ${{ secrets.TEAM_ID }}
+    workspace-path: Actions.xcworkspace # optional
+
